@@ -18,10 +18,10 @@ beforeEach(async ()=>{
     //create contract of catorycampaign
     factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({data:compiledFactory.bytecode})
-    .send({from:accounts, gas:'10000000'});
+    .send({from:accounts, gas:'100000000'});
 
     //create campaign using factory contract methods
-    await factory.methods.createCampaing('1000').send({from:accounts, gas:'100000'});
+    await factory.methods.createCampaing('1000').send({from:accounts, gas:'1000000'});
 
     //get address of created campaign contract address and create web3 referance of it
     [campaignAddress] = await factory.methods.getDeployedContracts.call();
